@@ -1,0 +1,407 @@
+const fs = require('fs');
+const path = require('path');
+
+// Maintain the first scenario we already perfected
+const ancScenario = {
+    "scenario_id": "ANC_DANGER_SIGNS_01",
+    "title": "Antenatal Visit: Danger Signs Screening",
+    "category": "Maternal Health (ANC)",
+    "difficulty": "Medium",
+    "duration_minutes": 5,
+    "thumbnail_url": "/images/anc_danger_signs_01.png",
+    "short_description": "Learn how to handle Antenatal Visit: Danger Signs Screening correctly in the field.",
+    "language": "en",
+    "skills_targeted": ["Counseling", "Danger Sign Identification", "Immediate Referral"],
+    "questions": [
+        {
+            "question_id": "ANC_Q1",
+            "patient_prompt": "You are completing a routine 7th-month ANC follow up. Sita mentions she has been having 'very bad headaches' since yesterday and her vision is sometimes blurry. What are you most concerned about?",
+            "mcq_question": "What is the most accurate clinical assessment for these symptoms?",
+            "options": [
+                { "option_id": "OPT_A", "text": "These are common pregnancy symptoms caused by stress.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_B", "text": "These are severe danger signs of Pre-eclampsia.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_C", "text": "She is likely just dehydrated and needs ORS.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_D", "text": "She needs to lie down and take a paracetamol.", "keywords": [], "intents": [] }
+            ],
+            "correct_option_id": "OPT_B", "critical": true,
+            "explanation_correct": "Correct! Severe headache combined with blurred vision in the third trimester are classic danger signs of Pre-eclampsia.",
+            "explanation_wrong": "Incorrect. Severe headache and blurred vision are critical danger signs for Pre-eclampsia.",
+            "tags": { "category": "assessment", "protocol_step": "step_1" }
+        },
+        {
+            "question_id": "ANC_Q2",
+            "patient_prompt": "After identifying the danger signs, Sita asks if she can just rest until her husband comes back tomorrow evening. What should you do?",
+            "mcq_question": "What is your immediate next action?",
+            "options": [
+                { "option_id": "OPT_A", "text": "Agree, and tell her to call you if the headache gets worse tomorrow.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_B", "text": "Immediately arrange transport and refer her to the nearest CHC/FRU.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_C", "text": "Tell her to walk to the sub-center immediately to check BP.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_D", "text": "Give her an iron-folic acid tablet to help with the headache.", "keywords": [], "intents": [] }
+            ],
+            "correct_option_id": "OPT_B", "critical": true,
+            "explanation_correct": "Correct. Pre-eclampsia can escalate to severe eclampsia (seizures) very quickly. Immediate referral is needed.",
+            "explanation_wrong": "Wrong. You missed a critical referral. You must never delay care when eclampsia danger signs are present.",
+            "tags": { "category": "action", "protocol_step": "step_2" }
+        },
+        {
+            "question_id": "ANC_Q3",
+            "patient_prompt": "While arranging the transport, Sita tells you she hasn't felt the baby move at all today. How do you respond?",
+            "mcq_question": "Which of these is the correct protocol response to decreased fetal movement?",
+            "options": [
+                { "option_id": "OPT_A", "text": "Tell her babies sleep a lot inside and not to worry.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_B", "text": "Tell her to drink a sugary drink and wait an hour.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_C", "text": "Acknowledge this as another critical danger sign (Decreased Fetal Movement) and expedite the referral.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_D", "text": "Press hard on her stomach to wake the baby up.", "keywords": [], "intents": [] }
+            ],
+            "correct_option_id": "OPT_C", "critical": true,
+            "explanation_correct": "Correct. Decreased fetal movement is another major danger sign indicating potential fetal distress.",
+            "explanation_wrong": "Incorrect. Decreased fetal movement is a major danger sign. Dismissing it delays life-saving care.",
+            "tags": { "category": "assessment", "protocol_step": "step_3" }
+        },
+        {
+            "question_id": "ANC_Q4",
+            "patient_prompt": "Sita is admitted and treated. Before you leave the hospital, what documentation must you complete?",
+            "mcq_question": "What is the correct tracking protocol?",
+            "options": [
+                { "option_id": "OPT_A", "text": "Update the MCP card and your ASHA diary with the referral details and diagnosis.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_B", "text": "Nothing, the hospital does all the paperwork.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_C", "text": "Just tell the ANM verbally next month.", "keywords": [], "intents": [] },
+                { "option_id": "OPT_D", "text": "Fill out a birth certificate in advance.", "keywords": [], "intents": [] }
+            ],
+            "correct_option_id": "OPT_A", "critical": false,
+            "explanation_correct": "Correct. Maintaining the Mother and Child Protection (MCP) card and your own ASHA diary is crucial.",
+            "explanation_wrong": "Incorrect. Proper documentation in the MCP card and ASHA diary is a mandatory protocol step.",
+            "tags": { "category": "documentation", "protocol_step": "step_4" }
+        }
+    ]
+};
+
+// Define structure for the other 11 scenarios based on ASHA protocols
+const scenariosData = [
+    ancScenario,
+    {
+        scenario_id: "PNC_BLEEDING_FEVER_01", title: "Postnatal Follow-up: Heavy Bleeding", category: "Maternal Health (PNC)", difficulty: "Hard", duration_minutes: 6,
+        thumbnail_url: "/images/pnc_bleeding_fever_01.png", short_description: "Manage a postnatal emergency of postpartum hemorrhage.", language: "en", skills_targeted: ["PNC Protocols", "Emergency Transport"],
+        questions: [
+            {
+                question_id: "PNC_Q1", patient_prompt: "You visit Maya on Day 3 after delivery. She says she is changing her pad every hour because it's completely soaked.", mcq_question: "What does this symptom indicate?",
+                options: [
+                    { option_id: "A", text: "Normal lochia flow after childbirth." },
+                    { option_id: "B", text: "Postpartum Hemorrhage (PPH) - a severe danger sign." },
+                    { option_id: "C", text: "A minor infection that needs antibiotics." },
+                    { option_id: "D", text: "Dehydration." }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct. Soaking a pad every hour is classic Postpartum Hemorrhage (PPH) and is a massive medical emergency.",
+                explanation_wrong: "Wrong. This is highly abnormal and life-threatening bleeding (PPH)."
+            },
+            {
+                question_id: "PNC_Q2", patient_prompt: "Maya's mother-in-law says she will give her hot turmeric milk to stop the bleeding. What is your action?", mcq_question: "What is the immediate ASHA protocol?",
+                options: [
+                    { option_id: "A", text: "Agree and wait 2 hours to see if it works." },
+                    { option_id: "B", text: "Tell her to sleep with legs elevated." },
+                    { option_id: "C", text: "Call an ambulance (108) immediately for emergency referral." },
+                    { option_id: "D", text: "Give her IFA tablets to quickly replace the blood loss." }
+                ], correct_option_id: "C", critical: true,
+                explanation_correct: "Correct. PPH requires immediate hospitalization; any delay can result in maternal death.",
+                explanation_wrong: "Wrong! You cannot treat active hemorrhaging at home. You MUST call an ambulance immediately."
+            },
+            {
+                question_id: "PNC_Q3", patient_prompt: "While waiting for the ambulance, Maya feels dizzy and her skin is pale and cold.", mcq_question: "What should you do while waiting for transport?",
+                options: [
+                    { option_id: "A", text: "Keep her warm, elevate her legs, and encourage ORS if she is conscious." },
+                    { option_id: "B", text: "Make her walk around to keep her awake." },
+                    { option_id: "C", text: "Give her a strong cup of tea." },
+                    { option_id: "D", text: "Start chest compressions." }
+                ], correct_option_id: "A", critical: false,
+                explanation_correct: "Shock management protocol involves keeping the mother warm and elevating legs to direct blood to critical organs.",
+                explanation_wrong: "Incorrect. You must treat for hemorrhagic shock by keeping her flat, legs elevated, and warm."
+            }
+        ]
+    },
+    {
+        scenario_id: "CHILD_DIARRHEA_ORS_01", title: "Child Diarrhea: ORS + Zinc", category: "Child Health", difficulty: "Medium", duration_minutes: 5,
+        thumbnail_url: "/images/child_diarrhea_ors_01.png", short_description: "Treating acute childhood diarrhea and preventing dehydration.", language: "en", skills_targeted: ["Dehydration Assessment", "ORS Preparation"],
+        questions: [
+            {
+                question_id: "DIA_Q1", patient_prompt: "A mother brings her 2-year-old son who has had 5 watery stools today. He is thirsty and restless.", mcq_question: "Which classification of dehydration does this child have based on IMNCI guidelines?",
+                options: [
+                    { option_id: "A", text: "No Dehydration" },
+                    { option_id: "B", text: "Some Dehydration" },
+                    { option_id: "C", text: "Severe Dehydration" },
+                    { option_id: "D", text: "Chronic Diarrhea" }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct. Being restless and thirsty are key indicators of 'Some Dehydration' requiring Plan B treatment.",
+                explanation_wrong: "Incorrect. Thirst and restlessness indicate 'Some Dehydration'."
+            },
+            {
+                question_id: "DIA_Q2", patient_prompt: "How will you instruct the mother to prepare ORS?", mcq_question: "What is the correct protocol for ORS mixing?",
+                options: [
+                    { option_id: "A", text: "Mix half the packet in 1 glass of water." },
+                    { option_id: "B", text: "Mix one full packet in 1 Litre of clean drinking water." },
+                    { option_id: "C", text: "Boil the ORS powder with milk." },
+                    { option_id: "D", text: "Mix 2 spoons in a small bowl of water." }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct! The WHO standard protocol is one entire packet in 1 Litre of water.",
+                explanation_wrong: "Wrong. ORS must always be mixed entirely in exactly 1 Litre of water to prevent electrolyte imbalance."
+            },
+            {
+                question_id: "DIA_Q3", patient_prompt: "The mother asks if she should stop giving the baby food until the diarrhea stops.", mcq_question: "What is your counseling response?",
+                options: [
+                    { option_id: "A", text: "Yes, rest the stomach for 24 hours." },
+                    { option_id: "B", text: "No, continue feeding and giving breastmilk to prevent malnutrition." },
+                    { option_id: "C", text: "Only give water with salt." },
+                    { option_id: "D", text: "Give only solid dry foods." }
+                ], correct_option_id: "B", critical: false,
+                explanation_correct: "Correct. Starving a child during diarrhea worsens malnutrition. Feeding must continue.",
+                explanation_wrong: "Incorrect. You must ALWAYS instruct the mother to continue feeding and breastfeeding during diarrhea."
+            }
+        ]
+    },
+    {
+        scenario_id: "CHILD_FEVER_DANGER_01", title: "Child Fever: Danger Signs", category: "Child Health", difficulty: "Hard", duration_minutes: 6,
+        thumbnail_url: "/images/child_fever_danger_01.png", short_description: "Assess a febrile child for malaria, pneumonia, and other severe diseases.", language: "en", skills_targeted: ["IMNCI Protocols", "Danger Signs"],
+        questions: [
+            {
+                question_id: "FEV_Q1", patient_prompt: "A 3-year-old child has had a high fever for 3 days. When you examine the child, you notice fast breathing (50 breaths per minute).", mcq_question: "What does fast breathing alongside fever indicate?",
+                options: [
+                    { option_id: "A", text: "Pneumonia" },
+                    { option_id: "B", text: "Simple Cold" },
+                    { option_id: "C", text: "Malaria" },
+                    { option_id: "D", text: "Measles" }
+                ], correct_option_id: "A", critical: true,
+                explanation_correct: "Correct. Fast breathing (>40 breaths/min for a 3-year-old) is the primary IMNCI criteria for Pneumonia.",
+                explanation_wrong: "Incorrect. Fast breathing is the cardinal sign of Pneumonia in children."
+            },
+            {
+                question_id: "FEV_Q2", patient_prompt: "You also note lower chest wall in-drawing when the child breathes in.", mcq_question: "What is your clinical decision?",
+                options: [
+                    { option_id: "A", text: "Give paracetamol and check tomorrow." },
+                    { option_id: "B", text: "Refer URGENTLY to a hospital as this is Severe Pneumonia." },
+                    { option_id: "C", text: "Give ORS." },
+                    { option_id: "D", text: "Do a Malaria Rapid Diagnostic Test (RDT)." }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct. Chest in-drawing means Severe Pneumonia, which requires urgently injected antibiotics at a facility.",
+                explanation_wrong: "Wrong! Chest in-drawing is a massive danger sign of Severe Pneumonia. Immediate referral is mandatory."
+            }
+        ]
+    },
+    {
+        scenario_id: "TB_SUSPECT_01", title: "TB Suspect: Cough > 2 Weeks", category: "Communicable Disease (TB)", difficulty: "Medium", duration_minutes: 6,
+        thumbnail_url: "/images/tb_suspect_01.png", short_description: "Roleplay identifying and referring a suspected Tuberculosis patient.", language: "en", skills_targeted: ["TB Screening", "Sputum Collection"],
+        questions: [
+            {
+                question_id: "TB_Q1", patient_prompt: "Ramesh, a 45-year-old man, complains of a constant cough that hasn't gone away for 3 weeks. He also mentions night sweats.", mcq_question: "According to NTEP guidelines, what should be your immediate suspicion?",
+                options: [
+                    { option_id: "A", text: "Seasonal Flu" },
+                    { option_id: "B", text: "Asthma" },
+                    { option_id: "C", text: "Tuberculosis (TB) Suspect" },
+                    { option_id: "D", text: "COVID-19 definitely" }
+                ], correct_option_id: "C", critical: true,
+                explanation_correct: "Correct! Cough > 2 weeks accompanied by night sweats classifies him as a presumptive TB case.",
+                explanation_wrong: "Incorrect. Any cough lasting longer than 2 weeks MUST be treated as a TB suspect according to national guidelines."
+            },
+            {
+                question_id: "TB_Q2", patient_prompt: "Ramesh refuses to go to the hospital because he thinks they will charge him a lot of money.", mcq_question: "How do you counsel him?",
+                options: [
+                    { option_id: "A", text: "Tell him TB testing and treatment (DOTS) is completely free at government hospitals." },
+                    { option_id: "B", text: "Offer him some herbal cough syrup." },
+                    { option_id: "C", text: "Tell him to go to a private clinic." },
+                    { option_id: "D", text: "Tell him to ignore it, it's just a cough." }
+                ], correct_option_id: "A", critical: false,
+                explanation_correct: "Correct. A key ASHA responsibility is educating patients that TB diagnosis and medication are 100% free under the government.",
+                explanation_wrong: "Incorrect. You must inform him that government TB services are completely free to encourage testing."
+            },
+            {
+                question_id: "TB_Q3", patient_prompt: "What specimen needs to be collected for his TB diagnostic test?", mcq_question: "What test is ordered for a presumptive pulmonary TB patient?",
+                options: [
+                    { option_id: "A", text: "Blood Test" },
+                    { option_id: "B", text: "Sputum Test (Two samples)" },
+                    { option_id: "C", text: "Urine Test" },
+                    { option_id: "D", text: "Throat Swab" }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct. Two sputum samples (one on the spot, one early morning) are required for an Acid-Fast Bacilli (AFB) smear or CBNAAT.",
+                explanation_wrong: "Incorrect. Pulmonary TB requires a Sputum Test to identify the mycobacterium."
+            }
+        ]
+    },
+    {
+        scenario_id: "DIABETES_FOLLOWUP_01", title: "Diabetes Follow-up: Adherence", category: "NCD", difficulty: "Medium", duration_minutes: 5,
+        thumbnail_url: "/images/diabetes_followup_01.png", short_description: "Conducting a home visit for a known Diabetic patient.", language: "en", skills_targeted: ["NCD Follow-up", "Foot Care Counseling"],
+        questions: [
+            {
+                question_id: "DIAF_Q1", patient_prompt: "You are visiting Geeta, who has Type 2 Diabetes. She says she stopped her medication last week because she 'felt fine'.", mcq_question: "What is your response?",
+                options: [
+                    { option_id: "A", text: "Agree with her. Only take medicine when feeling sick." },
+                    { option_id: "B", text: "Counsel her that Diabetes is a lifelong condition and medication must never be stopped without consulting a doctor, even if feeling well." },
+                    { option_id: "C", text: "Give her double the dose today." },
+                    { option_id: "D", text: "Tell her to just avoid sugar instead of medicine." }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct. ASHA workers play a critical role in ensuring NCD treatment adherence, as patients often incorrectly stop meds when asymptomatic.",
+                explanation_wrong: "Incorrect. Diabetes medication must be taken daily as prescribed. Stopping it causes dangerous silent sugar spikes."
+            },
+            {
+                question_id: "DIAF_Q2", patient_prompt: "Geeta mentions she has a small cut on the sole of her foot that hasn't healed in a month.", mcq_question: "What should you do?",
+                options: [
+                    { option_id: "A", text: "Tell her to wash it with soap." },
+                    { option_id: "B", text: "Give her a band-aid." },
+                    { option_id: "C", text: "Recognize this as a high-risk 'Diabetic Foot Ulcer' and refer her immediately to the PHC/Doctor." },
+                    { option_id: "D", text: "Apply some hot oil to it." }
+                ], correct_option_id: "C", critical: true,
+                explanation_correct: "Correct. Non-healing wounds in diabetics can quickly lead to gangrene and amputation. Immediate referral is needed.",
+                explanation_wrong: "Incorrect. A non-healing wound in a diabetic is a massive red flag requiring a doctor's intervention."
+            }
+        ]
+    },
+    {
+        scenario_id: "HYPERTENSION_URGENT_01", title: "Hypertension: Severe Headache", category: "NCD", difficulty: "Hard", duration_minutes: 5,
+        thumbnail_url: "/images/hypertension_urgent_01.png", short_description: "Recognizing a hypertensive crisis.", language: "en", skills_targeted: ["BP Checking", "Referral"],
+        questions: [
+            {
+                question_id: "HYP_Q1", patient_prompt: "An elderly man complains of a severe, throbbing headache, chest tightness, and dizziness. He is a known hypertensive.", mcq_question: "What is your clinical interpretation?",
+                options: [
+                    { option_id: "A", text: "He just needs to sleep." },
+                    { option_id: "B", text: "He is likely experiencing a Hypertensive Crisis, a medical emergency." },
+                    { option_id: "C", text: "He has a cold." },
+                    { option_id: "D", text: "He needs a massage." }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct. Severe headache and chest pain in a known hypertensive indicate dangerously high blood pressure.",
+                explanation_wrong: "Incorrect. These are critical danger signs for stroke or heart attack induced by high BP."
+            },
+            {
+                question_id: "HYP_Q2", patient_prompt: "You check his BP using your digital monitor. It reads 190/110 mmHg.", mcq_question: "What must you do?",
+                options: [
+                    { option_id: "A", text: "Urgent referral to the nearest hospital." },
+                    { option_id: "B", text: "Give him salt water." },
+                    { option_id: "C", text: "Wait 5 hours and check again." },
+                    { option_id: "D", text: "Give him paracetamol." }
+                ], correct_option_id: "A", critical: true,
+                explanation_correct: "Correct. BP over 180/110 is a crisis and requires immediate injected anti-hypertensives at a facility.",
+                explanation_wrong: "Incorrect. Blood pressure this high can cause an immediate brain hemorrhage. Rapid referral is required."
+            }
+        ]
+    },
+    {
+        scenario_id: "IMMUNIZATION_HESITANCY_01", title: "Child Immunization: Hesitancy", category: "Immunization", difficulty: "Easy", duration_minutes: 4,
+        thumbnail_url: "/images/immunization_hesitancy_01.png", short_description: "Counsel a family refusing the Pentavalent vaccine.", language: "en", skills_targeted: ["Counseling", "Vaccine Knowledge"],
+        questions: [
+            {
+                question_id: "IMM_Q1", patient_prompt: "A mother refuses to give her 6-week-old baby the Pentavalent vaccine because 'the last time the older child got a shot, he had a fever for two days'.", mcq_question: "How do you respond?",
+                options: [
+                    { option_id: "A", text: "Tell her vaccines are bad anyway." },
+                    { option_id: "B", text: "Scold her for being uneducated." },
+                    { option_id: "C", text: "Empathize, explain that mild fever is a normal sign the medicine is working, and the vaccine protects from 5 deadly diseases." },
+                    { option_id: "D", text: "Force her to bring the child." }
+                ], correct_option_id: "C", critical: false,
+                explanation_correct: "Correct. Effective ASHA counseling relies on empathy, addressing fears, and explaining the immense benefits of the vaccine.",
+                explanation_wrong: "Incorrect. Scolding or forcing ruins trust. You must respectfully explain that mild fever is normal."
+            }
+        ]
+    },
+    {
+        scenario_id: "NEWBORN_NOT_FEEDING_01", title: "Newborn: Not Feeding", category: "Newborn Care", difficulty: "Hard", duration_minutes: 6,
+        thumbnail_url: "/images/newborn_not_feeding_01.png", short_description: "Assess a neonate during an HBNC visit.", language: "en", skills_targeted: ["HBNC Protocol", "Neonate Danger Signs"],
+        questions: [
+            {
+                question_id: "NB_Q1", patient_prompt: "On Day 3 of HBNC (Home Based Newborn Care), you find the newborn is completely lethargic and refusing to breastfeed.", mcq_question: "How does the IMNCI protocol classify 'Not feeding since birth' or 'stopped feeding well'?",
+                options: [
+                    { option_id: "A", text: "A normal phase for newborns." },
+                    { option_id: "B", text: "A Severe Danger Sign requiring immediate referral." },
+                    { option_id: "C", text: "A sign the mother's milk is bad." },
+                    { option_id: "D", text: "A sign the baby needs formula milk." }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct. A neonate refusing to feed is one of the absolute most critical danger signs indicating sepsis or hypothermia.",
+                explanation_wrong: "Incorrect. Not feeding is a SEVERE danger sign in newborns. You must refer immediately."
+            }
+        ]
+    },
+    {
+        scenario_id: "MALNUTRITION_SCREEN_01", title: "Child Malnutrition: MUAC", category: "Nutrition", difficulty: "Medium", duration_minutes: 6,
+        thumbnail_url: "/images/malnutrition_screen_01.png", short_description: "Screening for SAM (Severe Acute Malnutrition).", language: "en", skills_targeted: ["MUAC Measurement", "Nutrition Referral"],
+        questions: [
+            {
+                question_id: "MAL_Q1", patient_prompt: "You measure a 2-year-old child's Mid-Upper Arm Circumference (MUAC). The tape shows Red.", mcq_question: "What does the Red zone on the MUAC tape indicate?",
+                options: [
+                    { option_id: "A", text: "Normal nutrition" },
+                    { option_id: "B", text: "Moderate Acute Malnutrition (MAM)" },
+                    { option_id: "C", text: "Severe Acute Malnutrition (SAM)" },
+                    { option_id: "D", text: "Obesity" }
+                ], correct_option_id: "C", critical: true,
+                explanation_correct: "Correct. Red (< 11.5 cm) indicates Severe Acute Malnutrition (SAM), meaning the child is at high risk of death.",
+                explanation_wrong: "Incorrect. Red indicates Severe Acute Malnutrition (SAM)."
+            },
+            {
+                question_id: "MAL_Q2", patient_prompt: "What is the standard protocol for a child identified as SAM with medical complications (like edema or fever)?", mcq_question: "Where should the child be sent?",
+                options: [
+                    { option_id: "A", text: "Refer to the Anganwadi center for extra rations only." },
+                    { option_id: "B", text: "Admit to the nearest Nutritional Rehabilitation Centre (NRC)." },
+                    { option_id: "C", text: "Tell the mother to feed the child more rice." },
+                    { option_id: "D", text: "Give iron syrup and wait." }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct. SAM children with complications require inpatient medical and nutritional therapy at an NRC.",
+                explanation_wrong: "Incorrect. SAM is a medical emergency requiring admission to a Nutritional Rehabilitation Centre (NRC)."
+            }
+        ]
+    },
+    {
+        scenario_id: "FAMILY_PLANNING_01", title: "Family Planning: Method Counseling", category: "Women’s Health", difficulty: "Easy", duration_minutes: 5,
+        thumbnail_url: "/images/family_planning_01.png", short_description: "Provide basket-of-choice contraceptive counseling.", language: "en", skills_targeted: ["Contraceptive Counseling", "Myth busting"],
+        questions: [
+            {
+                question_id: "FP_Q1", patient_prompt: "A young mother wants to space her next child but believes Copper-T (IUD) will travel to her heart.", mcq_question: "How do you counsel her?",
+                options: [
+                    { option_id: "A", text: "Tell her it's true and offer pills instead." },
+                    { option_id: "B", text: "Laugh at her for believing a myth." },
+                    { option_id: "C", text: "Respectfully bust the myth using anatomical flip-charts, explaining it stays safely in the uterus." },
+                    { option_id: "D", text: "Tell her her husband should decide." }
+                ], correct_option_id: "C", critical: false,
+                explanation_correct: "Correct. Using IEC materials (flip charts) to visually bust myths is the best way to encourage modern contraceptive adoption.",
+                explanation_wrong: "Incorrect. Empathy and visual education are required. Never validate a myth."
+            }
+        ]
+    },
+    {
+        scenario_id: "MENTAL_HEALTH_SUPPORT_01", title: "Mental Health: Postpartum Blues", category: "Mental Health", difficulty: "Medium", duration_minutes: 6,
+        thumbnail_url: "/images/mental_health_support_01.png", short_description: "Recognize maternal depression.", language: "en", skills_targeted: ["Empathy", "Depression Screening"],
+        questions: [
+            {
+                question_id: "MH_Q1", patient_prompt: "During a PNC visit (Day 14), you notice the new mother is constantly crying, says she feels worthless, and refuses to hold the baby.", mcq_question: "What is your assessment?",
+                options: [
+                    { option_id: "A", text: "She is just lazy." },
+                    { option_id: "B", text: "Signs of severe Postpartum Depression (PPD)." },
+                    { option_id: "C", text: "Normal behavior for new mothers." },
+                    { option_id: "D", text: "She just needs more sleep." }
+                ], correct_option_id: "B", critical: true,
+                explanation_correct: "Correct. Feelings of worthlessness and rejecting the baby are huge red flags for Postpartum Depression requiring psychiatric support.",
+                explanation_wrong: "Incorrect. These are serious signs of clinical Postpartum Depression, not normal fatigue."
+            }
+        ]
+    }
+];
+
+// Re-write the json to include questions for the options
+scenariosData.forEach(scenario => {
+    // Re-map the structure adding the standard properties if they were omitted for brevity
+    scenario.questions = scenario.questions.map((q, i) => {
+        return {
+            ...q,
+            options: q.options.map((opt, optIdx) => ({
+                ...opt,
+                option_id: `OPT_${String.fromCharCode(65 + optIdx)}`,
+                keywords: opt.keywords || [],
+                intents: opt.intents || []
+            })).map(opt => ({
+                option_id: opt.option_id,
+                text: opt.text,
+                keywords: opt.keywords,
+                intents: opt.intents
+            })),
+            correct_option_id: `OPT_${q.correct_option_id === 'A' ? 'A' : q.correct_option_id === 'B' ? 'B' : q.correct_option_id === 'C' ? 'C' : q.correct_option_id === 'D' ? 'D' : q.correct_option_id.replace('OPT_', '')}` // normalize
+        }
+    });
+});
+
+const outputDir = path.join(__dirname, '../src/data');
+const outputFile = path.join(outputDir, 'scenarios_mcq.json');
+fs.writeFileSync(outputFile, JSON.stringify(scenariosData, null, 2));
+
+console.log('Successfully injected real clinical data into scenarios_mcq.json');

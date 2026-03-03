@@ -1,0 +1,1086 @@
+[
+  {
+    "scenario_id": "ANC_DANGER_SIGNS_01",
+    "title": "प्रसवपूर्व मुलाकात: खतरे के संकेतों की जांच",
+    "category": "मातृ स्वास्थ्य (एएनसी)",
+    "difficulty": "Medium",
+    "duration_minutes": 5,
+    "thumbnail_url": "/images/anc_danger_signs_01.png",
+    "short_description": "Learn how to handle Antenatal Visit: Danger Signs Screening correctly in the field.",
+    "language": "en",
+    "skills_targeted": [
+      "Counseling",
+      "Danger Sign Identification",
+      "Immediate Referral"
+    ],
+    "questions": [
+      {
+        "question_id": "ANC_Q1",
+        "patient_prompt": "आप नियमित 7वें महीने की एएनसी अनुवर्ती कार्रवाई पूरी कर रहे हैं। सीता ने उल्लेख किया कि उसे कल से 'बहुत तेज़ सिरदर्द' हो रहा है और उसकी दृष्टि कभी-कभी धुंधली हो जाती है। आप किस बारे में सबसे अधिक चिंतित हैं?",
+        "mcq_question": "इन लक्षणों के लिए सबसे सटीक नैदानिक ​​मूल्यांकन क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "ये तनाव के कारण होने वाले सामान्य गर्भावस्था लक्षण हैं।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "ये प्री-एक्लेमप्सिया के गंभीर खतरे के संकेत हैं।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "संभवतः वह निर्जलित है और उसे ओआरएस की आवश्यकता है।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "उसे लेटने और पैरासिटामोल लेने की जरूरत है।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही! तीसरी तिमाही में धुंधली दृष्टि के साथ गंभीर सिरदर्द प्री-एक्लेमप्सिया के क्लासिक खतरे के संकेत हैं।",
+        "explanation_wrong": "गलत. गंभीर सिरदर्द और धुंधली दृष्टि प्री-एक्लेमप्सिया के लिए गंभीर खतरे के संकेत हैं।",
+        "tags": {
+          "category": "assessment",
+          "protocol_step": "step_1"
+        }
+      },
+      {
+        "question_id": "ANC_Q2",
+        "patient_prompt": "खतरे के संकेतों को पहचानने के बाद, सीता पूछती है कि क्या वह कल शाम तक अपने पति के वापस आने तक आराम कर सकती है। तुम्हे क्या करना चाहिए?",
+        "mcq_question": "आपकी तत्काल अगली कार्रवाई क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "सहमत हों, और उससे कहें कि अगर कल सिरदर्द बदतर हो जाए तो वह आपको कॉल करेगी।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "तुरंत परिवहन की व्यवस्था करें और उसे निकटतम सीएचसी/एफआरयू में रेफर करें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "उससे कहें कि वह बीपी जांचने के लिए तुरंत उपकेंद्र चले।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "सिरदर्द से राहत के लिए उसे आयरन-फोलिक एसिड की गोली दें।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। प्री-एक्लम्पसिया बहुत तेजी से गंभीर एक्लम्पसिया (दौरे) में बदल सकता है। तत्काल रेफरल की आवश्यकता है.",
+        "explanation_wrong": "गलत। आप एक महत्वपूर्ण रेफरल चूक गए. जब एक्लम्पसिया के खतरे के संकेत मौजूद हों तो आपको कभी भी देखभाल में देरी नहीं करनी चाहिए।",
+        "tags": {
+          "category": "action",
+          "protocol_step": "step_2"
+        }
+      },
+      {
+        "question_id": "ANC_Q3",
+        "patient_prompt": "परिवहन की व्यवस्था करते समय, सीता आपको बताती है कि उसे आज बच्चे की हलचल महसूस नहीं हुई। आप कैसे प्रतिक्रिया देते हैं?",
+        "mcq_question": "भ्रूण की गति में कमी के लिए इनमें से कौन सा सही प्रोटोकॉल प्रतिक्रिया है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "उसके बच्चों को बताएं कि वे खूब अंदर सोएं और चिंता न करें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "उसे मीठा पेय पीने को कहें और एक घंटा इंतज़ार करें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "इसे एक और गंभीर खतरे के संकेत (भ्रूण की हलचल में कमी) के रूप में स्वीकार करें और रेफरल में तेजी लाएं।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "बच्चे को जगाने के लिए उसके पेट को जोर से दबाएं।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_C",
+        "critical": true,
+        "explanation_correct": "सही। भ्रूण की हलचल में कमी एक और प्रमुख खतरे का संकेत है जो संभावित भ्रूण संकट का संकेत देता है।",
+        "explanation_wrong": "गलत. भ्रूण की हलचल कम होना एक बड़े खतरे का संकेत है। इसे ख़ारिज करने से जीवन रक्षक देखभाल में देरी होती है।",
+        "tags": {
+          "category": "assessment",
+          "protocol_step": "step_3"
+        }
+      },
+      {
+        "question_id": "ANC_Q4",
+        "patient_prompt": "सीता को भर्ती कर इलाज किया गया। अस्पताल छोड़ने से पहले आपको कौन से दस्तावेज़ पूरे करने होंगे?",
+        "mcq_question": "सही ट्रैकिंग प्रोटोकॉल क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "रेफरल विवरण और निदान के साथ एमसीपी कार्ड और अपनी आशा डायरी को अपडेट करें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "कुछ नहीं, अस्पताल सारी कागजी कार्रवाई करता है।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "अगले महीने एएनएम को मौखिक रूप से बता देना।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "जन्म प्रमाण पत्र पहले से भरें।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_A",
+        "critical": false,
+        "explanation_correct": "सही। मातृ एवं शिशु सुरक्षा (एमसीपी) कार्ड और अपनी आशा डायरी बनाए रखना महत्वपूर्ण है।",
+        "explanation_wrong": "गलत. एमसीपी कार्ड और आशा डायरी में उचित दस्तावेजीकरण एक अनिवार्य प्रोटोकॉल कदम है।",
+        "tags": {
+          "category": "documentation",
+          "protocol_step": "step_4"
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "PNC_BLEEDING_FEVER_01",
+    "title": "प्रसवोत्तर अनुवर्ती: भारी रक्तस्राव",
+    "category": "मातृ स्वास्थ्य (पीएनसी)",
+    "difficulty": "Hard",
+    "duration_minutes": 6,
+    "thumbnail_url": "/images/pnc_bleeding_fever_01.png",
+    "short_description": "Manage a postnatal emergency of postpartum hemorrhage.",
+    "language": "en",
+    "skills_targeted": [
+      "PNC Protocols",
+      "Emergency Transport"
+    ],
+    "questions": [
+      {
+        "question_id": "PNC_Q1",
+        "patient_prompt": "आप डिलीवरी के तीसरे दिन माया से मिलने जाएँ। उनका कहना है कि वह हर घंटे अपना पैड बदल रही हैं क्योंकि यह पूरी तरह से भीग चुका है।",
+        "mcq_question": "यह लक्षण क्या दर्शाता है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "बच्चे के जन्म के बाद सामान्य लोचिया प्रवाह।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "प्रसवोत्तर रक्तस्राव (पीपीएच) - एक गंभीर खतरे का संकेत।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "एक मामूली संक्रमण जिसके लिए एंटीबायोटिक्स की आवश्यकता होती है।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "निर्जलीकरण.",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। हर घंटे एक पैड भिगोना क्लासिक पोस्टपार्टम हेमोरेज (पीपीएच) है और यह एक बड़ी चिकित्सीय आपात स्थिति है।",
+        "explanation_wrong": "गलत। यह अत्यधिक असामान्य और जीवन-घातक रक्तस्राव (पीपीएच) है।"
+      },
+      {
+        "question_id": "PNC_Q2",
+        "patient_prompt": "माया की सास कहती है कि वह रक्तस्राव रोकने के लिए उसे गर्म हल्दी वाला दूध देगी। आपकी कार्रवाई क्या है?",
+        "mcq_question": "तत्काल आशा प्रोटोकॉल क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "सहमत हों और यह देखने के लिए 2 घंटे प्रतीक्षा करें कि यह काम करता है या नहीं।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "उसे पैर ऊंचे करके सोने को कहें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "आपातकालीन रेफरल के लिए तुरंत एम्बुलेंस (108) को कॉल करें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "खून की कमी को तुरंत पूरा करने के लिए उसे आईएफए की गोलियां दें।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_C",
+        "critical": true,
+        "explanation_correct": "सही। पीपीएच को तत्काल अस्पताल में भर्ती करने की आवश्यकता है; किसी भी देरी के परिणामस्वरूप मातृ मृत्यु हो सकती है।",
+        "explanation_wrong": "गलत! आप घर पर सक्रिय रक्तस्राव का इलाज नहीं कर सकते। आपको तुरंत एम्बुलेंस को कॉल करना होगा।"
+      },
+      {
+        "question_id": "PNC_Q3",
+        "patient_prompt": "एम्बुलेंस की प्रतीक्षा करते समय, माया को चक्कर आता है और उसकी त्वचा पीली और ठंडी हो जाती है।",
+        "mcq_question": "परिवहन की प्रतीक्षा करते समय आपको क्या करना चाहिए?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "उसे गर्म रखें, उसके पैरों को ऊपर उठाएं और अगर वह होश में है तो उसे ओआरएस दें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "उसे जगाए रखने के लिए उसे इधर-उधर घुमाएँ।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "उसे एक कड़क चाय का प्याला दो।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "छाती को दबाना शुरू करें।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_A",
+        "critical": false,
+        "explanation_correct": "शॉक मैनेजमेंट प्रोटोकॉल में मां को गर्म रखना और महत्वपूर्ण अंगों तक रक्त पहुंचाने के लिए पैरों को ऊपर उठाना शामिल है।",
+        "explanation_wrong": "गलत. आपको रक्तस्रावी सदमे का इलाज उसके सपाट, पैरों को ऊंचा और गर्म रखकर करना चाहिए।"
+      }
+    ]
+  },
+  {
+    "scenario_id": "CHILD_DIARRHEA_ORS_01",
+    "title": "बाल दस्त: ओआरएस + जिंक",
+    "category": "बाल स्वास्थ्य",
+    "difficulty": "Medium",
+    "duration_minutes": 5,
+    "thumbnail_url": "/images/child_diarrhea_ors_01.png",
+    "short_description": "Treating acute childhood diarrhea and preventing dehydration.",
+    "language": "en",
+    "skills_targeted": [
+      "Dehydration Assessment",
+      "ORS Preparation"
+    ],
+    "questions": [
+      {
+        "question_id": "DIA_Q1",
+        "patient_prompt": "एक माँ अपने 2 साल के बेटे को लाती है जिसे आज 5 बार पानी जैसा मल हुआ है। वह प्यासा और बेचैन है.",
+        "mcq_question": "आईएमएनसीआई दिशानिर्देशों के आधार पर इस बच्चे के पास निर्जलीकरण का कौन सा वर्गीकरण है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "कोई निर्जलीकरण नहीं",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "कुछ निर्जलीकरण",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "गंभीर निर्जलीकरण",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "जीर्ण दस्त",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। बेचैनी और प्यास लगना 'कुछ निर्जलीकरण' के प्रमुख संकेतक हैं जिनके लिए प्लान बी उपचार की आवश्यकता होती है।",
+        "explanation_wrong": "गलत. प्यास और बेचैनी 'कुछ निर्जलीकरण' का संकेत देती है।"
+      },
+      {
+        "question_id": "DIA_Q2",
+        "patient_prompt": "आप माँ को ओआरएस तैयार करने का निर्देश कैसे देंगे?",
+        "mcq_question": "ओआरएस मिश्रण के लिए सही प्रोटोकॉल क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "आधा पैकेट 1 गिलास पानी में मिला लें.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "1 लीटर स्वच्छ पेयजल में एक पूरा पैकेट मिलाएं।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "ओआरएस पाउडर को दूध के साथ उबालें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "एक छोटी कटोरी पानी में 2 चम्मच मिलाएं।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही! WHO का मानक प्रोटोकॉल 1 लीटर पानी में एक पूरा पैकेट है।",
+        "explanation_wrong": "गलत। इलेक्ट्रोलाइट असंतुलन को रोकने के लिए ओआरएस को हमेशा एक लीटर पानी में पूरी तरह मिलाना चाहिए।"
+      },
+      {
+        "question_id": "DIA_Q3",
+        "patient_prompt": "माँ पूछती है कि क्या उसे दस्त बंद होने तक बच्चे को खाना देना बंद कर देना चाहिए।",
+        "mcq_question": "आपकी परामर्श प्रतिक्रिया क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "हां, 24 घंटे पेट को आराम दें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "नहीं, कुपोषण से बचने के लिए दूध पिलाना और मां का दूध देना जारी रखें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "पानी केवल नमक के साथ ही दें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "ठोस सूखा भोजन ही दें।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": false,
+        "explanation_correct": "सही। दस्त के दौरान बच्चे को भूखा रखने से कुपोषण बढ़ जाता है। खिलाना जारी रखना चाहिए.",
+        "explanation_wrong": "गलत. आपको दस्त के दौरान मां को हमेशा दूध पिलाना और स्तनपान जारी रखने की हिदायत देनी चाहिए।"
+      }
+    ]
+  },
+  {
+    "scenario_id": "CHILD_FEVER_DANGER_01",
+    "title": "बच्चों को बुखार: खतरे के संकेत",
+    "category": "बाल स्वास्थ्य",
+    "difficulty": "Hard",
+    "duration_minutes": 6,
+    "thumbnail_url": "/images/child_fever_danger_01.png",
+    "short_description": "Assess a febrile child for malaria, pneumonia, and other severe diseases.",
+    "language": "en",
+    "skills_targeted": [
+      "IMNCI Protocols",
+      "Danger Signs"
+    ],
+    "questions": [
+      {
+        "question_id": "FEV_Q1",
+        "patient_prompt": "3 साल के बच्चे को 3 दिन से तेज बुखार है. जब आप बच्चे की जाँच करते हैं, तो आपको तेज़ साँसें (प्रति मिनट 50 साँसें) दिखाई देती हैं।",
+        "mcq_question": "बुखार के साथ तेज सांस लेना क्या दर्शाता है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "न्यूमोनिया",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "साधारण सर्दी",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "मलेरिया",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "खसरा",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_A",
+        "critical": true,
+        "explanation_correct": "सही। तेजी से सांस लेना (3 साल के बच्चे के लिए 40 सांस/मिनट से अधिक) निमोनिया के लिए प्राथमिक आईएमएनसीआई मानदंड है।",
+        "explanation_wrong": "गलत. बच्चों में तेजी से सांस लेना निमोनिया का मुख्य लक्षण है।"
+      },
+      {
+        "question_id": "FEV_Q2",
+        "patient_prompt": "जब बच्चा सांस लेता है तो आप छाती की निचली दीवार के रेखांकन पर भी ध्यान दें।",
+        "mcq_question": "आपका चिकित्सीय निर्णय क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "कल पैरासिटामोल देकर जांच करा लेना।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "तुरंत अस्पताल ले जाएँ क्योंकि यह गंभीर निमोनिया है।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "ओआरएस दें.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "मलेरिया रैपिड डायग्नोस्टिक टेस्ट (आरडीटी) कराएं।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। चेस्ट इन-ड्राइंग का मतलब गंभीर निमोनिया है, जिसके लिए किसी सुविधा में तत्काल एंटीबायोटिक्स इंजेक्ट करने की आवश्यकता होती है।",
+        "explanation_wrong": "गलत! छाती में दर्द होना गंभीर निमोनिया का एक बड़ा ख़तरा संकेत है। तत्काल रेफरल अनिवार्य है."
+      }
+    ]
+  },
+  {
+    "scenario_id": "TB_SUSPECT_01",
+    "title": "टीबी का संदेह: खांसी > 2 सप्ताह",
+    "category": "संचारी रोग (टीबी)",
+    "difficulty": "Medium",
+    "duration_minutes": 6,
+    "thumbnail_url": "/images/tb_suspect_01.png",
+    "short_description": "Roleplay identifying and referring a suspected Tuberculosis patient.",
+    "language": "en",
+    "skills_targeted": [
+      "TB Screening",
+      "Sputum Collection"
+    ],
+    "questions": [
+      {
+        "question_id": "TB_Q1",
+        "patient_prompt": "45 वर्षीय व्यक्ति रमेश को लगातार खांसी की शिकायत है जो 3 सप्ताह से ठीक नहीं हो रही है। उन्होंने रात को पसीना आने का भी जिक्र किया है.",
+        "mcq_question": "एनटीईपी दिशानिर्देशों के अनुसार, आपका तत्काल संदेह क्या होना चाहिए?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "मौसमी फ्लू",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "दमा",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "क्षय रोग (टीबी) संदिग्ध",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "निश्चित रूप से कोविड-19",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_C",
+        "critical": true,
+        "explanation_correct": "सही! रात में पसीने के साथ 2 सप्ताह से अधिक की खांसी उसे अनुमानित टीबी के मामले के रूप में वर्गीकृत करती है।",
+        "explanation_wrong": "गलत. राष्ट्रीय दिशानिर्देशों के अनुसार 2 सप्ताह से अधिक समय तक रहने वाली किसी भी खांसी को टीबी के संदिग्ध के रूप में माना जाना चाहिए।"
+      },
+      {
+        "question_id": "TB_Q2",
+        "patient_prompt": "रमेश ने अस्पताल जाने से इंकार कर दिया क्योंकि उसे लगता है कि वे उससे बहुत सारा पैसा लेंगे।",
+        "mcq_question": "आप उसे कैसे सलाह देते हैं?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "उन्हें बताएं कि सरकारी अस्पतालों में टीबी परीक्षण और उपचार (डॉट्स) पूरी तरह से मुफ्त है।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "उसे कुछ हर्बल कफ सिरप दें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "उसे किसी प्राइवेट क्लिनिक में जाने को कहें.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "उससे कहें कि इसे नजरअंदाज करें, यह सिर्फ खांसी है।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_A",
+        "critical": false,
+        "explanation_correct": "सही। आशा की एक प्रमुख जिम्मेदारी मरीजों को यह शिक्षित करना है कि सरकार के तहत टीबी का निदान और दवा 100% मुफ्त है।",
+        "explanation_wrong": "गलत. आपको उन्हें सूचित करना होगा कि परीक्षण को प्रोत्साहित करने के लिए सरकारी टीबी सेवाएँ पूरी तरह से निःशुल्क हैं।"
+      },
+      {
+        "question_id": "TB_Q3",
+        "patient_prompt": "उसके टीबी निदान परीक्षण के लिए कौन सा नमूना एकत्र करने की आवश्यकता है?",
+        "mcq_question": "अनुमानित फुफ्फुसीय टीबी रोगी के लिए कौन से परीक्षण का आदेश दिया गया है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "रक्त परीक्षण",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "बलगम परीक्षण (दो नमूने)",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "मूत्र परीक्षण",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "गले का स्वाब",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। एसिड-फास्ट बैसिलि (एएफबी) स्मीयर या सीबीएनएएटी के लिए दो थूक के नमूने (एक मौके पर, एक सुबह-सुबह) की आवश्यकता होती है।",
+        "explanation_wrong": "गलत. पल्मोनरी टीबी में माइकोबैक्टीरियम की पहचान के लिए बलगम परीक्षण की आवश्यकता होती है।"
+      }
+    ]
+  },
+  {
+    "scenario_id": "DIABETES_FOLLOWUP_01",
+    "title": "मधुमेह अनुवर्ती: पालन",
+    "category": "एनसीडी",
+    "difficulty": "Medium",
+    "duration_minutes": 5,
+    "thumbnail_url": "/images/diabetes_followup_01.png",
+    "short_description": "Conducting a home visit for a known Diabetic patient.",
+    "language": "en",
+    "skills_targeted": [
+      "NCD Follow-up",
+      "Foot Care Counseling"
+    ],
+    "questions": [
+      {
+        "question_id": "DIAF_Q1",
+        "patient_prompt": "आप गीता से मिलने जा रहे हैं, जिसे टाइप 2 मधुमेह है। वह कहती हैं कि उन्होंने पिछले सप्ताह अपनी दवाएँ बंद कर दीं क्योंकि उन्हें 'ठीक महसूस हो रहा था'।",
+        "mcq_question": "आपकी प्रतिक्रिया क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "उससे सहमत हूँ. बीमार महसूस होने पर ही दवा लें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "उसे सलाह दें कि मधुमेह एक आजीवन स्थिति है और डॉक्टर की सलाह के बिना दवा कभी बंद नहीं करनी चाहिए, भले ही वह ठीक महसूस कर रहा हो।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "आज उसे दोगुनी खुराक दें.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "उससे कहें कि दवा के बजाय चीनी से परहेज करें।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। आशा कार्यकर्ता एनसीडी उपचार का पालन सुनिश्चित करने में महत्वपूर्ण भूमिका निभाती हैं, क्योंकि लक्षण न दिखने पर मरीज अक्सर गलत तरीके से दवा बंद कर देते हैं।",
+        "explanation_wrong": "गलत. मधुमेह की दवा निर्धारित अनुसार प्रतिदिन लेनी चाहिए। इसे रोकने से खतरनाक साइलेंट शुगर स्पाइक्स हो जाते हैं।"
+      },
+      {
+        "question_id": "DIAF_Q2",
+        "patient_prompt": "गीता का कहना है कि उसके पैर के तलवे में एक छोटा सा घाव है जो एक महीने से ठीक नहीं हुआ है।",
+        "mcq_question": "तुम्हे क्या करना चाहिए?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "उससे कहो कि इसे साबुन से धो ले.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "उसे एक बैंड-सहायता दें.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "इसे उच्च जोखिम वाले 'डायबिटिक फुट अल्सर' के रूप में पहचानें और उसे तुरंत पीएचसी/डॉक्टर के पास भेजें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "इसमें थोड़ा गर्म तेल लगाएं.",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_C",
+        "critical": true,
+        "explanation_correct": "सही। मधुमेह रोगियों में ठीक न होने वाले घाव शीघ्र ही गैंग्रीन और अंग-विच्छेदन का कारण बन सकते हैं। तत्काल रेफरल की आवश्यकता है.",
+        "explanation_wrong": "गलत. मधुमेह रोगी में ठीक न होने वाला घाव एक बड़ा खतरा है जिसके लिए डॉक्टर के हस्तक्षेप की आवश्यकता होती है।"
+      }
+    ]
+  },
+  {
+    "scenario_id": "HYPERTENSION_URGENT_01",
+    "title": "उच्च रक्तचाप: गंभीर सिरदर्द",
+    "category": "एनसीडी",
+    "difficulty": "Hard",
+    "duration_minutes": 5,
+    "thumbnail_url": "/images/hypertension_urgent_01.png",
+    "short_description": "Recognizing a hypertensive crisis.",
+    "language": "en",
+    "skills_targeted": [
+      "BP Checking",
+      "Referral"
+    ],
+    "questions": [
+      {
+        "question_id": "HYP_Q1",
+        "patient_prompt": "एक बुजुर्ग व्यक्ति को गंभीर, धड़कते सिरदर्द, सीने में जकड़न और चक्कर आने की शिकायत है। वह एक ज्ञात उच्च रक्तचाप रोगी है।",
+        "mcq_question": "आपकी नैदानिक ​​व्याख्या क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "उसे तो बस सोना है.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "वह संभवतः उच्च रक्तचाप संकट, एक चिकित्सा आपातकाल का अनुभव कर रहा है।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "उसे सर्दी है.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "उसे मालिश की जरूरत है.",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। ज्ञात उच्च रक्तचाप में गंभीर सिरदर्द और सीने में दर्द खतरनाक रूप से उच्च रक्तचाप का संकेत देता है।",
+        "explanation_wrong": "गलत. हाई बीपी से प्रेरित स्ट्रोक या दिल के दौरे के लिए ये गंभीर खतरे के संकेत हैं।"
+      },
+      {
+        "question_id": "HYP_Q2",
+        "patient_prompt": "आप अपने डिजिटल मॉनिटर का उपयोग करके उसका बीपी जांचें। यह 190/110 mmHg पढ़ता है।",
+        "mcq_question": "तुमको क्या करना चाहिए?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "निकटतम अस्पताल में तत्काल रेफरल।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "उसे नमक वाला पानी पिलाएं.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "5 घंटे प्रतीक्षा करें और दोबारा जांचें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "उसे पैरासिटामोल दें.",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_A",
+        "critical": true,
+        "explanation_correct": "सही। 180/110 से अधिक बीपी एक संकट है और इसके लिए किसी सुविधा केंद्र पर तत्काल एंटी-हाइपरटेन्सिव इंजेक्शन की आवश्यकता होती है।",
+        "explanation_wrong": "गलत. इतना अधिक रक्तचाप तत्काल मस्तिष्क रक्तस्राव का कारण बन सकता है। शीघ्र रेफरल की आवश्यकता है."
+      }
+    ]
+  },
+  {
+    "scenario_id": "IMMUNIZATION_HESITANCY_01",
+    "title": "बाल टीकाकरण: झिझक",
+    "category": "प्रतिरक्षा",
+    "difficulty": "Easy",
+    "duration_minutes": 4,
+    "thumbnail_url": "/images/immunization_hesitancy_01.png",
+    "short_description": "Counsel a family refusing the Pentavalent vaccine.",
+    "language": "en",
+    "skills_targeted": [
+      "Counseling",
+      "Vaccine Knowledge"
+    ],
+    "questions": [
+      {
+        "question_id": "IMM_Q1",
+        "patient_prompt": "एक माँ ने अपने 6 सप्ताह के बच्चे को पेंटावैलेंट टीका देने से इंकार कर दिया क्योंकि 'पिछली बार जब बड़े बच्चे को टीका लगाया गया था, तो उसे दो दिनों तक बुखार था।'",
+        "mcq_question": "आप कैसे प्रतिक्रिया देते हैं?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "उसे बताएं कि टीके वैसे भी ख़राब हैं।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "उसे अशिक्षित होने के लिए डांटें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "सहानुभूति व्यक्त करें, समझाएं कि हल्का बुखार एक सामान्य संकेत है कि दवा काम कर रही है, और टीका 5 घातक बीमारियों से बचाता है।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "उसे बच्चा लाने के लिए मजबूर करो.",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_C",
+        "critical": false,
+        "explanation_correct": "सही। प्रभावी आशा परामर्श सहानुभूति, भय को दूर करने और टीके के अत्यधिक लाभों को समझाने पर निर्भर करता है।",
+        "explanation_wrong": "गलत. डांटना या जबरदस्ती करना विश्वास को खत्म कर देता है। आपको सम्मानपूर्वक समझाना चाहिए कि हल्का बुखार सामान्य है।"
+      }
+    ]
+  },
+  {
+    "scenario_id": "NEWBORN_NOT_FEEDING_01",
+    "title": "नवजात: दूध नहीं पिला रहा",
+    "category": "नवजात शिशु की देखभाल",
+    "difficulty": "Hard",
+    "duration_minutes": 6,
+    "thumbnail_url": "/images/newborn_not_feeding_01.png",
+    "short_description": "Assess a neonate during an HBNC visit.",
+    "language": "en",
+    "skills_targeted": [
+      "HBNC Protocol",
+      "Neonate Danger Signs"
+    ],
+    "questions": [
+      {
+        "question_id": "NB_Q1",
+        "patient_prompt": "एचबीएनसी (होम बेस्ड न्यूबॉर्न केयर) के तीसरे दिन, आप पाते हैं कि नवजात शिशु पूरी तरह से सुस्त है और स्तनपान करने से इनकार कर रहा है।",
+        "mcq_question": "आईएमएनसीआई प्रोटोकॉल 'जन्म के बाद से दूध न पिलाना' या 'अच्छी तरह से खाना खिलाना बंद कर देना' को कैसे वर्गीकृत करता है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "नवजात शिशुओं के लिए एक सामान्य चरण।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "एक गंभीर खतरे का संकेत जिसके लिए तत्काल रेफरल की आवश्यकता है।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "माँ का दूध खराब होने का संकेत.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "यह एक संकेत है कि बच्चे को फार्मूला दूध की आवश्यकता है।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। एक नवजात शिशु का दूध पीने से इनकार करना सेप्सिस या हाइपोथर्मिया का संकेत देने वाले सबसे गंभीर खतरे के संकेतों में से एक है।",
+        "explanation_wrong": "गलत. नवजात शिशुओं में दूध न पिलाना एक गंभीर खतरे का संकेत है। आपको तुरंत रेफर करना होगा."
+      }
+    ]
+  },
+  {
+    "scenario_id": "MALNUTRITION_SCREEN_01",
+    "title": "बाल कुपोषण: एमयूएसी",
+    "category": "पोषण",
+    "difficulty": "Medium",
+    "duration_minutes": 6,
+    "thumbnail_url": "/images/malnutrition_screen_01.png",
+    "short_description": "Screening for SAM (Severe Acute Malnutrition).",
+    "language": "en",
+    "skills_targeted": [
+      "MUAC Measurement",
+      "Nutrition Referral"
+    ],
+    "questions": [
+      {
+        "question_id": "MAL_Q1",
+        "patient_prompt": "आप 2 साल के बच्चे की मध्य-ऊपरी भुजा परिधि (एमयूएसी) मापते हैं। टेप लाल दिखाता है.",
+        "mcq_question": "एमयूएसी टेप पर रेड जोन क्या दर्शाता है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "सामान्य पोषण",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "मध्यम तीव्र कुपोषण (एमएएम)",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "गंभीर तीव्र कुपोषण (एसएएम)",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "मोटापा",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_C",
+        "critical": true,
+        "explanation_correct": "सही। लाल (<11.5 सेमी) गंभीर तीव्र कुपोषण (एसएएम) को इंगित करता है, जिसका अर्थ है कि बच्चे को मृत्यु का उच्च जोखिम है।",
+        "explanation_wrong": "गलत. लाल रंग गंभीर तीव्र कुपोषण (एसएएम) को इंगित करता है।"
+      },
+      {
+        "question_id": "MAL_Q2",
+        "patient_prompt": "चिकित्सीय जटिलताओं (जैसे एडिमा या बुखार) वाले एसएएम के रूप में पहचाने जाने वाले बच्चे के लिए मानक प्रोटोकॉल क्या है?",
+        "mcq_question": "बच्चे को कहां भेजा जाए?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "अतिरिक्त राशन के लिए आंगनवाड़ी केंद्र पर ही संपर्क करें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "नजदीकी पोषण पुनर्वास केंद्र (एनआरसी) में भर्ती कराएं।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "मां से कहें कि बच्चे को ज्यादा चावल खिलाएं.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "आयरन सिरप दीजिए और इंतजार कीजिए.",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। जटिलताओं वाले एसएएम बच्चों को एनआरसी में आंतरिक रोगी चिकित्सा और पोषण चिकित्सा की आवश्यकता होती है।",
+        "explanation_wrong": "गलत. एसएएम एक चिकित्सीय आपात स्थिति है जिसके लिए पोषण पुनर्वास केंद्र (एनआरसी) में प्रवेश की आवश्यकता होती है।"
+      }
+    ]
+  },
+  {
+    "scenario_id": "FAMILY_PLANNING_01",
+    "title": "परिवार नियोजन: विधि परामर्श",
+    "category": "महिलाओं की सेहत",
+    "difficulty": "Easy",
+    "duration_minutes": 5,
+    "thumbnail_url": "/images/family_planning_01.png",
+    "short_description": "Provide basket-of-choice contraceptive counseling.",
+    "language": "en",
+    "skills_targeted": [
+      "Contraceptive Counseling",
+      "Myth busting"
+    ],
+    "questions": [
+      {
+        "question_id": "FP_Q1",
+        "patient_prompt": "एक युवा मां अपने अगले बच्चे को अंतरिक्ष में रखना चाहती है लेकिन उसका मानना ​​है कि कॉपर-टी (आईयूडी) उसके दिल तक पहुंच जाएगा।",
+        "mcq_question": "आप उसे कैसे सलाह देते हैं?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "उसे बताएं कि यह सच है और इसके बदले गोलियां दें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "एक मिथक पर विश्वास करने के लिए उस पर हँसें।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "शारीरिक फ्लिप-चार्ट का उपयोग करके सम्मानपूर्वक मिथक को तोड़ें, यह समझाते हुए कि यह गर्भाशय में सुरक्षित रूप से रहता है।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "उसे बताएं कि उसके पति को निर्णय लेना चाहिए।",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_C",
+        "critical": false,
+        "explanation_correct": "सही। मिथकों को दूर करने के लिए आईईसी सामग्री (फ्लिप चार्ट) का उपयोग करना आधुनिक गर्भनिरोधक अपनाने को प्रोत्साहित करने का सबसे अच्छा तरीका है।",
+        "explanation_wrong": "गलत. सहानुभूति और दृश्य शिक्षा की आवश्यकता है। कभी भी किसी मिथक को मान्य न करें।"
+      }
+    ]
+  },
+  {
+    "scenario_id": "MENTAL_HEALTH_SUPPORT_01",
+    "title": "मानसिक स्वास्थ्य: प्रसवोत्तर ब्लूज़",
+    "category": "मानसिक स्वास्थ्य",
+    "difficulty": "Medium",
+    "duration_minutes": 6,
+    "thumbnail_url": "/images/mental_health_support_01.png",
+    "short_description": "Recognize maternal depression.",
+    "language": "en",
+    "skills_targeted": [
+      "Empathy",
+      "Depression Screening"
+    ],
+    "questions": [
+      {
+        "question_id": "MH_Q1",
+        "patient_prompt": "पीएनसी विजिट (दिन 14) के दौरान, आपने देखा कि नई माँ लगातार रो रही है, कहती है कि वह बेकार महसूस करती है, और बच्चे को गोद में लेने से इंकार कर देती है।",
+        "mcq_question": "आपका आकलन क्या है?",
+        "options": [
+          {
+            "option_id": "OPT_A",
+            "text": "वह बस आलसी है.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_B",
+            "text": "गंभीर प्रसवोत्तर अवसाद (पीपीडी) के लक्षण।",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_C",
+            "text": "नई माताओं के लिए सामान्य व्यवहार.",
+            "keywords": [],
+            "intents": []
+          },
+          {
+            "option_id": "OPT_D",
+            "text": "उसे अभी और नींद की जरूरत है.",
+            "keywords": [],
+            "intents": []
+          }
+        ],
+        "correct_option_id": "OPT_B",
+        "critical": true,
+        "explanation_correct": "सही। बेकार की भावना और बच्चे को अस्वीकार करना प्रसवोत्तर अवसाद के लिए बड़े खतरे के संकेत हैं, जिसके लिए मनोचिकित्सकीय सहायता की आवश्यकता होती है।",
+        "explanation_wrong": "गलत. ये क्लिनिकल पोस्टपार्टम डिप्रेशन के गंभीर लक्षण हैं, सामान्य थकान के नहीं।"
+      }
+    ]
+  }
+]

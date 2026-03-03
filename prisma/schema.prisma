@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String       @id @default(uuid())
+  display_name  String?
+  email         String?      @unique
+  phone         String?      @unique
+  password_hash String?
+  language      String       @default("en")
+  district      String?
+  created_at    DateTime     @default(now())
+  
+  sessions      Session[]
+  mcq_sessions  McqSession[]
+}
+
+model Scenario {
+  id                                  String         @id @default(uuid())
+  title                               String
+  category                            String
+  supported_languages                 String         @default("en") // Comma separated
+  version                             String         @default("1.0")
+  estimated_duration_minutes_optional Int?
+  difficulty_optional                 String?
+  skills_targeted_json                String         @default("[]") // Array of strings
+  global_scoring_json                 String         @default("{}") // JSON
+  checklist_master_json               String         @default("[]") // JSON representation of full checklist bank
+  end_report_template_json            String         @default("{}") // JSON rules for report generation
+  nodes                               ScenarioNode[]
+  sessions                            Session[]
+}
+
+model ScenarioNode {
+  id                         String    @id @default(uuid())
+  scenario_id                String
+  node_key                   String
+  patient_text               String
+  patient_media_url_optional String?
+  patient_audio_url_optional String?
+  expected_items_json        String    @default("[]") // Array of string ids
+  intent_hints_json          String    @default("[]") // Array of strings
+  evaluation_rules_json      String    @default("{}") // JSON: { keyword_rules: {}, intent_rules: {} }
+  transitions_json           String    @default("[]") // JSON representation of transition objects
+  scenario                   Scenario  @relation(fields: [scenario_id], references: [id], onDelete: Cascade)
+
+  @@unique([scenario_id, node_key])
+}
+
+model Session {
+  id                    String        @id @default(uuid())
+  user_id               String?
+  device_id             String?
+  scenario_id           String
+  language              String
+  started_at            DateTime      @default(now())
+  completed_at_optional DateTime?
+  score_optional        Int?
+  user                  User?         @relation(fields: [user_id], references: [id], onDelete: SetNull)
+  scenario              Scenario      @relation(fields: [scenario_id], references: [id], onDelete: Cascade)
+  turns                 SessionTurn[]
+}
+
+model SessionTurn {
+  id                      String   @id @default(uuid())
+  session_id              String
+  node_key                String
+  user_text               String
+  user_audio_url_optional String?
+  matched_items_json      String   @default("[]") // JSON of String IDs
+  missed_items_json       String   @default("[]") // JSON of String IDs
+  critical_missed_json    String   @default("[]") // JSON of String IDs
+  created_at              DateTime @default(now())
+  session                 Session  @relation(fields: [session_id], references: [id], onDelete: Cascade)
+}
+
+model McqSession {
+  id                    String       @id @default(uuid())
+  user_id               String
+  scenario_id           String       // Reference to static JSON scenario ID
+  started_at            DateTime     @default(now())
+  completed_at_optional DateTime?
+  score                 Int?
+  user                  User         @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  answers               McqAnswer[]
+}
+
+model McqAnswer {
+  id                 String       @id @default(uuid())
+  session_id         String
+  question_id        String
+  selected_option_id String
+  is_correct         Boolean
+  is_critical_miss   Boolean      @default(false)
+  created_at         DateTime     @default(now())
+  session            McqSession   @relation(fields: [session_id], references: [id], onDelete: Cascade)
+}
